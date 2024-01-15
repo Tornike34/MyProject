@@ -20,10 +20,9 @@ public class StudentController {
         return studentService.getStudent();
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<String> registerNewStudent(@RequestBody Student student){
-            studentService.addNewStudent(student);
-        return new ResponseEntity<>("There are some null elements!", HttpStatus.BAD_REQUEST);
+            return studentService.addNewStudent(student);
     }
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(@PathVariable("studentId") Long studentid){
@@ -31,10 +30,10 @@ public class StudentController {
     }
 
     @PutMapping(path = "{studentId}")
-    public void updateStudent(
+    public ResponseEntity<String> updateStudent(
             @PathVariable("studentId") Long studentId,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String email){
-        studentService.updateStudent(studentId,name,email);
+        return studentService.updateStudent(studentId,name,email);
     }
 }

@@ -25,7 +25,7 @@ public class StudentConfig implements WebMvcConfigurer {
         return args -> {
             Student tornike = new Student(
                     1L,
-                    null,
+                    "torni",
                     "tornike.davitashvili3@gmail.com",
                     LocalDate.of(2003, MAY,27)
             );
